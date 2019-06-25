@@ -146,7 +146,7 @@ def main():
             track_times = []
             for idx, (img, gt_bbox) in enumerate(video):
                 tic = cv2.getTickCount()
-                if idx == 0:
+                if idx == 0: #<-- FIXME: Only the first frame needs gt_bbox from JSON file
                     cx, cy, w, h = get_axis_aligned_bbox(np.array(gt_bbox))
                     gt_bbox_ = [cx-(w-1)/2, cy-(h-1)/2, w, h]
                     tracker.init(img, gt_bbox_)
